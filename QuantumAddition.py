@@ -2,16 +2,19 @@ from projectq.ops import R, X, H, All, Measure
 from projectq.meta import Control, Compute, Uncompute
 from hiq.projectq.backends import SimulatorMPI
 from hiq.projectq.cengines import GreedyScheduler, HiQMainEngine
-from projectq.backends import CommandPrinter
+from projectq.backends import CommandPrinter, CircuitDrawer
 from projectq.setups.default import get_engine_list
 
 import numpy as np
-import random
 import copy
+
 from mpi4py import MPI
 
+
+drawing_engine = CircuitDrawer()
+
 #eng = HiQMainEngine(engine_list=get_engine_list()+[CommandPrinter()])
-eng = HiQMainEngine(engine_list=get_engine_list())
+eng = HiQMainEngine(engine_list=get_engine_list()+[drawing_engine])
 
 # number of digits to two sets of qureg
 dig_of_qureg = 3
@@ -50,6 +53,8 @@ with Compute(eng):
 # do quantum addition
 quantum_addition(qureg1,qureg2)
 
+eng.flush()
+
 # reverse QFT to qureg2
 Uncompute(eng)
 
@@ -70,6 +75,9 @@ All(Measure) | qureg2
 # Call the main engine to execute
 #print(wave_func)
 
- # Obtain the output. Note that the result is still stored in the qubit object yet clashed into a classical bit
+# Obtain the output. Note that the result is still stored in the qubit object yet clashed into a classical bit
 print("Measured: {}".format([int(qubit) for qubit in qureg2]))
+
+# print latex frame of the whole circuit
+print(drawing_engine.get_latex())
 
