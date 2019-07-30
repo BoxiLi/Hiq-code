@@ -35,10 +35,26 @@ SqrtY = SqrtYGate()
 
 
 
-opt_dict = {(H, Z, H) : (X),
-            (H, X, H) : (Z), 
+opt_dict = {(X, Y) : (Ph(np.pi/2), Z),
+            (X, Z) : (Ph(3*np.pi/2), Y),
+            (Y, X) : (Ph(3*np.pi/2), Z),
+            (Y, Z) : (Ph(np.pi/2), X),
+            (Z, X) : (Ph(np.pi/2), Y),
+            (Z, Y) : (Ph(np.pi/2), X),
+            (X, Y, X) : (Ph(np.pi), Y),
+            (X, Y, Z) : (Ph(np.pi/2),),
+            (X, Z, X) : (Ph(np.pi), Z),
+            (X, Z, Y) : (Ph(3*np.pi/2),),
+            (X, SqrtX, X) : (SqrtX,),
+            (X, SqrtY, Z) : (SqrtY,),
+            (X, H, Z) : (H,),
+            (Y, X, Y) : (Ph(np.pi),X),
+            (Y, X, Z) : (Ph(3*np.pi/2),),
+            (Y, Z, X) : (Ph(np.pi/2),),
+            (H, Z, H) : (X,),
+            (H, X, H) : (Z,), 
             (H, Y, H): (Ph(np.pi), Y),
-            (T, T, T, T): (Z)}
+            (T, T, T, T): (Z,)}
 
 num_of_qubit = 2
 
