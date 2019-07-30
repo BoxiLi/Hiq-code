@@ -41,6 +41,28 @@ from projectq.ops import FlushGate, FastForwardingGate, NotMergeable, BasicGate,
 
 
 ####################################
+"""
+Define class method outside
+projectq.ops._optimize is overwritten, with a newly added class method
+called multigate_merge. It optimizes single-qubit gates with rules
+defined in opt_dict
+"""
+opt_dict = {(H, Z, H) : (X,),
+            (H, X, H) : (Z,), 
+            (H, Y, H): (Ph(np.pi), Y),
+            (T, T, T, T): (Z,)}
+
+
+def sublist_finder(mylist, opt_dict):
+    for i in range(len(mylist)):
+        for pattern in opt_dict:
+            num_ele = len(pattern)
+            if mylist[i] == pattern[0] and tuple(mylist[i:i+num_ele]) == pattern:
+                pos = list(range(i, i+num_ele))
+                return pos, opt_dict[pattern]
+    return [],[]
+
+
 def my_optimize(self, idx, lim=None):
     """
     Copied from projectq code, only add multigate_merge at the end.
@@ -121,8 +143,8 @@ def my_optimize(self, idx, lim=None):
 
 def multigate_merge(self, idx, lim):
     """
-    Find all the single qubit gate untill the first controlled gate,
-    try to simplify the gate list with a pre-defined multipul-gate
+    Use the pre-defined single qubit gate optimization in opt_dict
+    to simplify the gate list, such as HZH=X.
     """
     # print("initial")
     # for cmd in self._l[idx]:
@@ -133,7 +155,10 @@ def multigate_merge(self, idx, lim):
     if lim is not None:
         limit = lim
     
-    # loop and find the position of all the single qubit gates
+    # Divide the cmd list into several sublist containing only
+    # single-qubit gates. E.g. [H, X, CZ, X, H] -> [[H, X], [X, H]]
+    # all_single_gates_pos store the index of those cmd.
+    # E.g all_single_gates_pos = [[0, 1], [3, 4]]
     control_pos = []
     for i in range(limit):
         cmd = cmd_list[i]
@@ -146,46 +171,49 @@ def multigate_merge(self, idx, lim):
         start = p + 1
     all_single_gates_pos.append(list(range(start, limit)))
 
+    # replace the cmd that can be simplified
+    # E.g. [[H, X, H], [X]] -> [[Z], [X]] 
+    new_cmd_list = []
     for single_gates_pos in all_single_gates_pos:
-        # print(limit)
-        # print("first and last", first_single_q_gates, last_single_q_gates)
-        gates_list = [cmd_list[i].gate for i in single_gates_pos]
-        # print("here")
-        # for gate in gates_list:
-        #     print(gate)
-        # find if gates in gates list can be simplified
-        to_merge_pos, target_gates = sublist_finder(gates_list, opt_dict)
-        # print(target_gates)
-        # print("gate pos",gates_pos)
-        # print("first", first_single_q_gates)
-        # if first_single_q_gates==5:
-        #     print("first 5")
-        #     print("to_merge_pos", to_merge_pos)
-        #     print(gates_list)
-        #     # print([cmd.gate for cmd in cmd_list[first_single_q_gates:]])
-        #     print("first and last", first_single_q_gates, last_single_q_gates)
-        #     print(first_single_q_gates < limit-1)
+        if not single_gates_pos:  # two neighbour controlled gates
+            new_cmd_list.append([])
+            continue
 
-        if not to_merge_pos: # list is empty: nothing to merge
-            raise NotMergeable
+        # transfer from cmd to gate class
+        gates_list = [cmd_list[i].gate for i in single_gates_pos]
+        # ind for gates_list and gates class after simplification
+        gate_ind, target_gates = sublist_finder(gates_list, opt_dict)
+        # ind for cmd_list
+        to_merge_pos = [single_gates_pos[ind] for ind in gate_ind]
+
+        if not to_merge_pos: # list is empty: nothing to replace, already optimal
+            new_cmd_list.append(cmd_list[single_gates_pos[0]: single_gates_pos[-1]+1])
+            continue
 
         merge_start = to_merge_pos[0]
         merge_end = to_merge_pos[-1]
-        # print("len cmd_list", len(cmd_list))
         to_merge_cmd = [cmd_list[i] for i in to_merge_pos]
-        new_cmds = to_merge_cmd[0].self_merge_multi(to_merge_cmd, target_gates)
-        self._l[idx] = cmd_list[: merge_start] + new_cmds + cmd_list[merge_end+1: ]
-        # print("new cmd")
-        # for cmd in cmd_list[merge_end: ]:
+        # print("gate to merge")
+        # for cmd in to_merge_cmd:
         #     print(cmd.gate)
         # print()
-        # print("after optimize")
-        # for cmd in self._l[idx]:
-        #     print(cmd.gate)
-        # print()
-        limit = limit - len(to_merge_pos) + len(target_gates)
-        # print("new_limit", limit)
-        first_single_q_gates = control_pos + 1
+        new_cmd_list.append(
+            # not changed
+            cmd_list[single_gates_pos[0]: merge_start] +
+            # replaced by new cmd
+            to_merge_cmd[0].self_merge_multi(to_merge_cmd, target_gates) +
+            # not changed
+            cmd_list[merge_end+1: single_gates_pos[-1]+1])
+
+    self._l[idx] = []
+    for i, p in enumerate(control_pos):
+        self._l[idx] += new_cmd_list[i] + [cmd_list[p]]
+    self._l[idx] += new_cmd_list[-1]
+    limit = len(self._l[idx])
+    # print("after optimize")
+    # for cmd in self._l[idx]:
+    #     print(cmd.gate)
+    # print()
     return limit
 
 
@@ -209,36 +237,12 @@ def self_merge_multi(self, others, target_gates):
     else:
         raise NotMergeable
 
-##################################
-"""
-Define class method outside
-"""            
+
 Command.self_merge_multi = self_merge_multi
 LocalOptimizer._optimize = my_optimize
 LocalOptimizer.multigate_merge = multigate_merge
 #################################
-"""
-Pre-defined gate optimization
-"""
-opt_dict = {(H, Z, H) : (X,),
-            (H, X, H) : (Z,), 
-            (H, Y, H): (Ph(np.pi), Y),
-            (T, T, T, T): (Z,)}
 
-def sublist_finder(mylist, opt_dict):
-    matches = []
-    pos_list = []
-    for i in range(len(mylist)):
-        for pattern in opt_dict:
-            num_ele = len(pattern)
-            if mylist[i] == pattern[0] and tuple(mylist[i:i+num_ele]) == pattern:
-                matches.append(pattern)
-                pos = list(range(i, i+num_ele))
-                return pos, opt_dict[pattern]
-    return [],[]
-
-pos_list, new_gates = sublist_finder([H,Z,Z,H,H,Z,H,X,H,X,H], opt_dict)
-#################################
 
 # create a list of restriction engines
 restric_engine = restrictedgateset.get_engine_list(one_qubit_gates=(X,Y,Z,H,S,T,Rx,Ry,Rz),
@@ -251,14 +255,19 @@ qureg = eng.allocate_qureg(2)
 H | qureg[0]
 X | qureg[0]
 H | qureg[0]
+Z | qureg[0]
+H | qureg[0]
 CZ | (qureg[0], qureg[1])
 H | qureg[0]
-X | qureg[0]
 H | qureg[0]
-# Z | qureg[0]
-# H | qureg[0]
-# X | qureg[1]
-# Z | qureg[1]
+X | qureg[0]
+CZ | (qureg[0], qureg[1])
+H | qureg[0]
+Z | qureg[0]
+H | qureg[0]
+H | qureg[0]
+X | qureg[1]
+Z | qureg[1]
 
 All(Measure) | qureg
 
