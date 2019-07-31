@@ -44,7 +44,6 @@ def measure_amplitude(theta, eng, qureg,  str_state):
     del qureg
     if amp > 0.5:
         amp = 1
-    print(1-amp)
     return 1-amp
 
 
@@ -65,7 +64,6 @@ def calculate_theta(eng, final_state):
                     )
         if amp_error.fun < 0.9999:
             break
-        print(amp_error)
     return amp_error.jac
 
 
