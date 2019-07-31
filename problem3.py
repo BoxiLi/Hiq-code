@@ -72,7 +72,7 @@ if __name__ == "__main__":
     #eng = MainEngine()
     # use hiq simulator
     # TODO carefull with num_local_qubits
-    backend = SimulatorMPI(gate_fusion=True, num_local_qubits=30)
+    backend = SimulatorMPI(gate_fusion=True)
     cache_depth = 10
     rule_set = DecompositionRuleSet(modules=[projectq.setups.decompositions])
     engines = [TagRemover()

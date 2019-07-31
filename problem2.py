@@ -285,7 +285,7 @@ def circuit_generator(eng, target_state, mapper):
 
 
 if __name__ == "__main__":
-    backend = SimulatorMPI(gate_fusion=True, num_local_qubits=20)
+    backend = SimulatorMPI(gate_fusion=True)
     cache_depth = 10
     rule_set = DecompositionRuleSet(modules=[projectq.setups.decompositions])
     engines = [TagRemover()
