@@ -89,41 +89,57 @@ Lamda = np.array([[ 1, 1,-1, 1],
                 [ 1,-1,-1,-1],
                 [ 1,-1, 1, 1]])
 
-def two_qubits_dec(U):
-    U2 = MMAT.T.conjugate() @ U @ MMAT
-    UR = (U2 + U2.T.conjugate()) / 2
-    UI = (U2 - U2.T.conjugate()) / 2.j
-    V2, S, Xd = svd(UI)
-
-    T = UR @ Xd
-    V1, tempC = qr(T)
-    C = np.diagonal(tempC)
-    V1 = T/C
-
-    UA, UB = dec_kron(MMAT @ V1 @ MMAT.T.conjugate())
-    VA, VB = dec_kron(MMAT @ Xd @ MMAT.T.conjugate())
-
-    #############################################
-    theta = inv(Lamda) @ np.angle(np.diag(V1.T.conjugate() @ U2 @ Xd.T.conjugate()))
-    print(theta)
-
-    X = np.array([[0, 1],
-        [1, 0]])
-
-    Z = np.array([[ 1,  0],
-        [ 0, -1]])
-
-    I2 = np.array([[1 , 0],
-        [0 , 1]])
+U = exp_sig_xx(1., 3*np.pi/4)
 
 
-    Ra1 = UA
-    Rb1 = UB
-    Ra2 = (1j / np.sqrt(2)) * (X + Z) * exp_sig_x(theta[0] + np.pi / 2 , 1)
-    Rb2 = exp_sig_z(theta[2] , 1)
-    Ra3 = (1j / np.sqrt(2)) * (X + Z)
-    Rb3 = exp_sig_z(-1 * theta[1] , 1)
-    Ra4 = VA @ (I2-1j*X) * (1 / np.sqrt(2))
-    Rb4 = inv(VB @ (I2-1j*X) * (1 / np.sqrt(2)))
+U2 = MMAT.T.conjugate() @ U @ MMAT
+UR = (U2 + U2.T.conjugate()) / 2
+UI = (U2 - U2.T.conjugate()) / 2.j
+V2, S, Xd = svd(UI)
+
+T = UR @ Xd
+V1, tempC = qr(T)
+C = np.diagonal(tempC)
+V1 = T/C
+
+UA, UB = dec_kron(MMAT @ V1 @ MMAT.T.conjugate())
+VA, VB = dec_kron(MMAT @ Xd @ MMAT.T.conjugate())
+
+#############################################
+theta = inv(Lamda) @ np.angle(np.diag(V1.T.conjugate() @ U2 @ Xd.T.conjugate()))
+print(theta)
+
+X = np.array([[0, 1],
+    [1, 0]])
+
+Z = np.array([[ 1,  0],
+    [ 0, -1]])
+
+I2 = np.array([[1 , 0],
+    [0 , 1]])
+
+
+Ra1 = UA
+Rb1 = UB
+Ra2 = (1j / np.sqrt(2)) * (X + Z) @ exp_sig_x(theta[0] + np.pi / 2 , -1)
+Rb2 = exp_sig_z(theta[2] , -1)
+Ra3 = (1j / np.sqrt(2)) * (X + Z)
+Rb3 = exp_sig_z(1 * theta[1] , 1)
+Ra4 = VA @ (I2-1j*X) / np.sqrt(2)
+Rb4 = VB @ inv((I2 - 1j*X) / np.sqrt(2))
+
+cnot = np.array([[1,0,0,0],
+                 [0,1,0,0],
+                 [0,0,0,1],
+                 [0,0,1,0]])
+m1=np.kron(Ra1, Rb1)
+cnot
+m2=np.kron(Ra2, Rb2)
+cnot
+m3=np.kron(Ra3, Rb3)
+cnot
+m4=np.kron(Ra4, Rb4)
+
+res = m1 @ cnot @ m2 @ cnot @ m3 @ cnot @m4
 
 
