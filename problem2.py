@@ -18,6 +18,15 @@ from mpi4py import MPI
 
 
 ######################################
+"""
+We intercept the cmd_list before it is send to the LocalOptimizer
+and check there if there is any gate that is not allowed.
+We then add a list of swap gate into the cmd_list and send them
+back to the LocalOptimizer.
+In general, we could define a Mapper for it like the one
+in projectq.cengines.linearmapper, but due to time restriction
+we choose to do it this way.
+"""
 from projectq.backends import CommandPrinter
 import numpy as np
 from copy import deepcopy
@@ -39,7 +48,6 @@ def my_receive(self, command_list):
                 if len(self._l[idx]) > 0:
                     new_dict[idx] = self._l[idx]
             self._l = new_dict
-            assert self._l == dict()
             self.send([cmd])
         else:
             self._cache_cmd(cmd)
@@ -134,6 +142,9 @@ def add_swap(self, command_list):
 
 
 #####################################
+"""
+This part is the function that finds the shortest path in a graph
+"""
 from collections import defaultdict
 
 
@@ -202,12 +213,49 @@ def dijsktra(graph, initial, end):
 
 
 #####################################
-### Begin main programm
+"""
+This function is used to transform string input into the desired form
+of the dijsktra algorithm.
+"""
+def read_mapper(mapper):
+        mapper0 = mapper.split('\n')
+        connection = []
+        for i in range(len(mapper0)):
+                mapper1 = mapper0[i].split(',')
+                List = []
+                for j in range(len(mapper1)):
+                        List.append(int(mapper1[j]))
+                if len(List) == 1:
+                        n = List[0]
+                if len(List) == 2:
+                        connection.append((List[0],List[1]))
+        return n,connection
+#####################################
+"""
+Capture the out put of CommandPrinter
+"""
+import io
+import sys
 
 
-def circuit_generator(eng, state, mapper):
+class Capturing(list):
+    def __enter__(self):
+        self._stdout = sys.stdout
+        sys.stdout = self._stringio = io.StringIO()
+        return self
+    def __exit__(self, *args):
+        self.extend(self._stringio.getvalue().splitlines())
+        del self._stringio    # free up some memory
+        sys.stdout = self._stdout
+#######################################
+"""
+circuit_generator makes use of the above functions and reutrn
+a projectq circuit in string form
+"""
+def circuit_generator(eng, target_state, mapper):
     ############## need to change
-    connections = set([(j,i) for i,j in mapper] + mapper)
+    n, directed_mapper = read_mapper(mapper)
+    connections = set([(j,i) for i,j in directed_mapper] + directed_mapper)
 
 
     LocalOptimizer.receive = my_receive
@@ -216,37 +264,38 @@ def circuit_generator(eng, state, mapper):
     LocalOptimizer.connections = connections
 
 
-    n = int(np.log2(len(state)))
-    qureg = eng.allocate_qureg(n)
+    n = int(np.log2(len(target_state)))
     LocalOptimizer.qureg = qureg
 
-    StatePreparation(state) | qureg
+    with Capturing() as output:
+        StatePreparation(target_state) | qureg
+        eng.flush() # In order to have all the above gates sent to the simulator and executed
+        # mappting, wave_func = deepcopy(eng.backend.cheat())
+    # print(sum(wave_func.conj() * target_state))
+    return "; ".join(output)
 
-    eng.flush() # In order to have all the above gates sent to the simulator and executed
-    mappting, wave_func = deepcopy(eng.backend.cheat())
+
+if __name__ == "__main__":
+    backend = SimulatorMPI(gate_fusion=True, num_local_qubits=20)
+    cache_depth = 10
+    rule_set = DecompositionRuleSet(modules=[projectq.setups.decompositions])
+    engines = [TagRemover()
+                , LocalOptimizer(cache_depth)
+                , AutoReplacer(rule_set)
+                , TagRemover()
+                , LocalOptimizer(cache_depth)
+                , GreedyScheduler()
+                , CommandPrinter()]
+    eng = HiQMainEngine(backend, engines)
+    qureg = eng.allocate_qureg(5)
+
+    target_state = np.random.rand(2**5) + np.random.rand(2**5)
+    target_state = target_state / np.linalg.norm(target_state)
+
+    mapper = "5\n0,1\n1,2\n1,3\n2,3\n2,4\n3,4"
+    circuit = circuit_generator(eng, target_state, mapper)
+    
     All(Measure) | qureg
-    print(sum(wave_func.conj() * state))
-    return None
 
-
-backend = SimulatorMPI(gate_fusion=True, num_local_qubits=20)
-cache_depth = 10
-rule_set = DecompositionRuleSet(modules=[projectq.setups.decompositions])
-engines = [TagRemover()
-            , LocalOptimizer(cache_depth)
-            , AutoReplacer(rule_set)
-            , TagRemover()
-            , LocalOptimizer(cache_depth)
-            , GreedyScheduler()
-            , CommandPrinter()]
-eng = HiQMainEngine(backend, engines)
-
-n = 5
-state = np.random.rand(2**n) + np.random.rand(2**n)
-
-mapper = [(0, 1), (1, 2), (1, 3), (2, 3), (2, 4), (3, 4)]
-
-state = state / np.linalg.norm(state)
-
-circuit_generator(eng, state, mapper)
+    print(circuit)
 
