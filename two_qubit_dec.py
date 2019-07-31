@@ -1,14 +1,14 @@
 import numpy as np
 from numpy.linalg import inv, svd, qr
 from numpy import unravel_index
-np.set_printoptions(precision=4)
+# np.set_printoptions(precision=4, formatter="complex")
 
 ########################
 def exp_sig_x(A, delta_t):
     x =  A * delta_t
     return np.array([[np.cos(x),
-                           -1j * np.sin(x)],
-                          [-1j * np.sin(x),
+                           1j * np.sin(x)],
+                          [1j * np.sin(x),
                            np.cos(x)]])
 
 # A = exp_sig_x(-B, delta_t)
@@ -19,8 +19,8 @@ def exp_sig_x(A, delta_t):
 
 def exp_sig_z(A, delta_t):
     x = A * delta_t
-    return np.array([[-np.exp(1j * x), 0],
-                      [0, np.exp(1j * x)]])
+    return np.array([[np.exp(1j * x), 0],
+                      [0, np.exp(-1j * x)]])
 
 # print(exp_sig_z(-B, delta_t))
 
@@ -29,10 +29,10 @@ def exp_sig_z(A, delta_t):
 
 def exp_sig_xx(A, delta_t):
     x = A * delta_t
-    return np.array([[np.cos(x), 0, 0, -1j*np.sin(x)],
-                      [0, np.cos(x), -1j*np.sin(x), 0],
-                      [0, -1j*np.sin(x), np.cos(x), 0],
-                      [-1j*np.sin(x), 0, 0, np.cos(x)]])
+    return np.array([[np.cos(x), 0, 0, 1j*np.sin(x)],
+                      [0, np.cos(x), 1j*np.sin(x), 0],
+                      [0, 1j*np.sin(x), np.cos(x), 0],
+                      [1j*np.sin(x), 0, 0, np.cos(x)]])
 
 # c0 = exp_sig_xx(-B, delta_t)
 # print(c0)
@@ -44,10 +44,10 @@ def exp_sig_xx(A, delta_t):
 
 def exp_sig_zz(A, delta_t):
     x = A * delta_t
-    return np.array([[np.exp(-1j * x), 0, 0, 0],
-                     [0, np.exp(1j * x), 0, 0],
-                     [0, 0, np.exp(1j * x), 0],
-                     [0, 0, 0, np.exp(-1j * x)]])
+    return np.array([[np.exp(1j * x), 0, 0, 0],
+                     [0, np.exp(-1j * x), 0, 0],
+                     [0, 0, np.exp(-1j * x), 0],
+                     [0, 0, 0, np.exp(1j * x)]])
 
 # d0 = sig_zz(-B, delta_t)
 
@@ -66,15 +66,15 @@ def dec_kron(mat2dec):
             a = nor
             max_ind = (i, j)
 
-    max_in_sub_mat2dec = np.argmax(np.abs(mat2dec[max_ind[0]:max_ind[0]+2, max_ind[1]:max_ind[1]+2]))
-    row_ind, col_ind = unravel_index(max_in_sub_mat2dec, (2,2))
+    max_pos_sub_mat2dec = np.argmax(np.abs(mat2dec[max_ind[0]:max_ind[0]+2, max_ind[1]:max_ind[1]+2]))
+    row_ind, col_ind = unravel_index(max_pos_sub_mat2dec, (2,2))
     for (i,j) in [(0,0), (0,1), (1,0), (1,1)]:
         UA[i,j] = mat2dec[2*i+row_ind, 2*j+col_ind]
-    UA = UA/np.dot(UA[0,:].conjugate(), UA[:,0])
+    UA = UA/np.sqrt((UA.T.conjugate() @ UA)[0,0])
 
     UB = mat2dec[max_ind[0]:max_ind[0]+2, max_ind[1]:max_ind[1]+2]
     UB = np.array(UB)
-    UB = UB/np.dot(UB[0,:].conjugate(), UB[:,0])
+    UB = UB/np.sqrt((UB.T.conjugate() @ UB)[0,0])
     return UA, UB
 
 
@@ -82,12 +82,12 @@ MMAT = (1/np.sqrt(2.)*
     np.array([[ 1,  0,  0, 1j],
             [ 0, 1j,  1,  0],
             [ 0, 1j, -1,  0],
-            [ 1,  0,  0,-1j]]))
+            [ 1,  0,  0,-1j]], dtype=np.complex))
 
 Lamda = np.array([[ 1, 1,-1, 1],
                 [ 1, 1, 1,-1],
                 [ 1,-1,-1,-1],
-                [ 1,-1, 1, 1]])
+                [ 1,-1, 1, 1]], dtype=np.complex)
 
 U = exp_sig_xx(1., 3*np.pi/4)
 
@@ -110,28 +110,33 @@ theta = inv(Lamda) @ np.angle(np.diag(V1.T.conjugate() @ U2 @ Xd.T.conjugate()))
 print(theta)
 
 X = np.array([[0, 1],
-    [1, 0]])
+    [1, 0]], dtype=np.complex)
 
 Z = np.array([[ 1,  0],
-    [ 0, -1]])
+    [ 0, -1]], dtype=np.complex)
 
 I2 = np.array([[1 , 0],
-    [0 , 1]])
+    [0 , 1]], dtype=np.complex)
 
 
+# Ra1 = UA
+# Rb1 = UB
+# Ra2 = 1.j/np.sqrt(2) * (X + Z) @ exp_sig_x(theta[0])
 Ra1 = UA
 Rb1 = UB
-Ra2 = (1j / np.sqrt(2)) * (X + Z) @ exp_sig_x(theta[0] + np.pi / 2 , -1)
-Rb2 = exp_sig_z(theta[2] , -1)
-Ra3 = (1j / np.sqrt(2)) * (X + Z)
-Rb3 = exp_sig_z(1 * theta[1] , 1)
+Ra2 = 1.j / np.sqrt(2) * (X + Z) @ exp_sig_x(theta[1] + np.pi / 2, -1)
+Ra2 = (1j / np.sqrt(2)) * (X + Z) @ exp_sig_x(theta[1] + np.pi / 2 , -1)
+Rb2 = exp_sig_z(theta[3] , -1)
+Ra3 = -(1j / np.sqrt(2)) * (X + Z)
+Rb3 = exp_sig_z(theta[2] , 1)
 Ra4 = VA @ (I2-1j*X) / np.sqrt(2)
+# Ra4 = np.dot(VA, (I2-1.j*X)/np.sqrt(2))
 Rb4 = VB @ inv((I2 - 1j*X) / np.sqrt(2))
 
 cnot = np.array([[1,0,0,0],
                  [0,1,0,0],
                  [0,0,0,1],
-                 [0,0,1,0]])
+                 [0,0,1,0]], dtype=np.complex)
 m1=np.kron(Ra1, Rb1)
 cnot
 m2=np.kron(Ra2, Rb2)
@@ -141,5 +146,6 @@ cnot
 m4=np.kron(Ra4, Rb4)
 
 res = m1 @ cnot @ m2 @ cnot @ m3 @ cnot @m4
+print(res.T.conjugate() @ U)
 
 
