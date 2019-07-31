@@ -51,16 +51,15 @@ from circuit import example_circuit
 para = (theta1, theta2, theta3, theta4, theta5)
 def measure_amplitude(para):
     eng = HiQMainEngine(backend, engine_list= engines)
-    Qureg = eng.allocate_qureg(2)
+    Qureg = eng.allocate_qureg(14)
     # mapping, wave_func = copy.deepcopy(eng.backend.cheat())
-    # example_circuit(Qureg, para)
-    X | Qureg[0]
-    # amp = eng.backend.get_probability("00001111111111", Qureg)
-    eng.flush()
-
-    amp = eng.backend.get_probability("00", Qureg)
-    print(1-amp)
+    example_circuit(Qureg, para)
     All(Measure) | Qureg
+    eng.flush()
+    amp = eng.backend.get_probability("00001111111111", Qureg)
+
+    # amp = eng.backend.get_probability("00", Qureg)
+    print(1-amp)
     # All(Deallocate) | Qureg
     eng.flush()
     del Qureg
