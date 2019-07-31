@@ -19,7 +19,7 @@ import projectq.setups.decompositions
 
 from mpi4py import MPI
 
-backend = SimulatorMPI(gate_fusion=True, num_local_qubits=)
+backend = SimulatorMPI(gate_fusion=True, num_local_qubits=10)
 
 cache_depth = 10
 rule_set = DecompositionRuleSet(modules=[projectq.setups.decompositions])

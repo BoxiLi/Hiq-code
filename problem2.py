@@ -248,31 +248,40 @@ class Capturing(list):
         del self._stringio    # free up some memory
         sys.stdout = self._stdout
 #######################################
-"""
-circuit_generator makes use of the above functions and reutrn
-a projectq circuit in string form
-"""
 def circuit_generator(eng, target_state, mapper):
-    ############## need to change
+    """
+    circuit_generator makes use of the above functions and reutrn
+    a projectq circuit in string form
+
+    Args:
+        eng：
+        target_state: The final state of the algorithm. 
+                      It is a list or array with 2^n complex numbers
+        mapper: A string representing the connected qubits in the device.
+                E.g. "5\n0,1\n1,2\n1,3\n2,3\n2,4\n3,4"
+    Returns:
+        The quantum circuit prepare the targets_state that can be
+        implemented directly on the device restricted by mapper
+    """
     n, directed_mapper = read_mapper(mapper)
     connections = set([(j,i) for i,j in directed_mapper] + directed_mapper)
-
 
     LocalOptimizer.receive = my_receive
     LocalOptimizer.add_swap = add_swap
     LocalOptimizer.graph = Graph(connections)
     LocalOptimizer.connections = connections
 
-
     n = int(np.log2(len(target_state)))
     LocalOptimizer.qureg = qureg
 
+    eng.flush()
     with Capturing() as output:
         StatePreparation(target_state) | qureg
-        eng.flush() # In order to have all the above gates sent to the simulator and executed
+        eng.flush()
         # mappting, wave_func = deepcopy(eng.backend.cheat())
     # print(sum(wave_func.conj() * target_state))
-    return "; ".join(output)
+    circuit = "; ".join(output)
+    return circuit.replace("Qureg", "qubit")
 
 
 if __name__ == "__main__":
@@ -289,7 +298,7 @@ if __name__ == "__main__":
     eng = HiQMainEngine(backend, engines)
     qureg = eng.allocate_qureg(5)
 
-    target_state = np.random.rand(2**5) + np.random.rand(2**5)
+    target_state = np.random.rand(2**5) + np.random.rand(2**5) * 1.j
     target_state = target_state / np.linalg.norm(target_state)
 
     mapper = "5\n0,1\n1,2\n1,3\n2,3\n2,4\n3,4"

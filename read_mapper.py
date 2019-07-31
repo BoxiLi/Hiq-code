@@ -18,5 +18,5 @@ def read_mapper(mapper):
                         connection.append((List[0],List[1]))
         return n,connection
 
-
+mapper = "5\n0,1\n1,2\n1,3\n2,3\n2,4\n3,4"
 print(read_mapper(mapper))

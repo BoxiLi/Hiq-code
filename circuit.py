@@ -1,5 +1,10 @@
 from projectq.ops import Allocate, Measure, All, H, X, Y, Z, H, S, T, CX, CZ, Rx, Ry, Rz, Ph
-def example_circuit(Qureg, theta1, theta2, theta3, theta4, theta5):
+def run_circuit(qureg, theta):
+    theta1 = theta[0]
+    theta2 = theta[1]
+    theta3 = theta[2]
+    theta4 = theta[3]
+    theta5 = theta[4]
     # Totally 5 parameters
     # Allocate | Qureg[0]
     # Allocate | Qureg[1]
@@ -15,3497 +20,3497 @@ def example_circuit(Qureg, theta1, theta2, theta3, theta4, theta5):
     # Allocate | Qureg[11]
     # Allocate | Qureg[12]
     # Allocate | Qureg[13]
-    X | Qureg[0]
-    X | Qureg[1]
-    X | Qureg[2]
-    X | Qureg[3]
-    X | Qureg[4]
-    X | Qureg[5]
-    X | Qureg[6]
-    X | Qureg[7]
-    X | Qureg[8]
-    X | Qureg[9]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[6]
-    H | Qureg[7]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[7]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[10]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    Rz(theta1) | Qureg[10]
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[10]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[0]
-    H | Qureg[1]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[1]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[8]
-    H | Qureg[9]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[9]
-    H | Qureg[8]
-    H | Qureg[2]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[3]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[8]
-    H | Qureg[9]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[2]
-    H | Qureg[1]
-    H | Qureg[4]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[4]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[6]
-    H | Qureg[7]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[3]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[8]
-    H | Qureg[9]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    H | Qureg[0]
-    H | Qureg[1]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[1]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[2]
-    H | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[1]
-    H | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    H | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[9]
-    H | Qureg[8]
-    H | Qureg[4]
-    H | Qureg[5]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[5]
-    H | Qureg[4]
-    H | Qureg[2]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[3]
-    H | Qureg[2]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[7]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[1]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[2]
-    H | Qureg[3]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[3]
-    H | Qureg[2]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[3]
-    H | Qureg[1]
-    H | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[1]
-    H | Qureg[2]
-    H | Qureg[5]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[3]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[4]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[8]
-    H | Qureg[9]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[9]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[2]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[4]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[3]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[4]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    H | Qureg[2]
-    H | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[2]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[6]
-    H | Qureg[7]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[9]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[6]
-    H | Qureg[7]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[10]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    Rz(theta2) | Qureg[10]
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[10]
-    H | Qureg[0]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[0]
-    H | Qureg[3]
-    H | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[9]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[3]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[5]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta4) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[2]
-    H | Qureg[0]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta4) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[0]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[2]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[7]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta4) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[3]
-    H | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    H | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[1]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[6]
-    H | Qureg[7]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[12]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[4]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    H | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[10]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    Rz(theta4) | Qureg[10]
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[10]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[8]
-    H | Qureg[9]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    H | Qureg[2]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[2]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[9]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[11]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta4) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[10]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    Rz(theta3) | Qureg[10]
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[10]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[0]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[5]
-    H | Qureg[0]
-    H | Qureg[3]
-    H | Qureg[4]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[0]
-    H | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[5]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[7]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    Rx(theta1) | Qureg[0]
-    H | Qureg[5]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[4]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[5]
-    H | Qureg[4]
-    H | Qureg[1]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[4]
-    H | Qureg[1]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[4]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[1]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[11]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[1]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[4]
-    H | Qureg[5]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[5]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[5]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[6]
-    H | Qureg[7]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[7]
-    H | Qureg[6]
-    H | Qureg[6]
-    H | Qureg[7]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[7]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[7]
-    H | Qureg[6]
-    H | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[1]
-    H | Qureg[0]
-    H | Qureg[2]
-    H | Qureg[3]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[3]
-    H | Qureg[2]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[0]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[1], Qureg[12] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[0]
-    H | Qureg[0]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[0]
-    H | Qureg[4]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[5], Qureg[12] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    H | Qureg[5]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[3]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[4]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta1) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[3], Qureg[12] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    Rx(theta1) | Qureg[6]
-    Rx(theta1) | Qureg[7]
-    Rx(theta1) | Qureg[12]
-    H | Qureg[13]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[7], Qureg[12] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[7]
-    Rx(theta3) | Qureg[6]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta3) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[0]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[0]
-    H | Qureg[8]
-    H | Qureg[9]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[9]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta5) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[1]
-    H | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    H | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[1]
-    H | Qureg[8]
-    H | Qureg[9]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    H | Qureg[9]
-    H | Qureg[8]
-    Rx(theta1) | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    Rx(theta1) | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    H | Qureg[12]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[9], Qureg[12] )
-    CX | ( Qureg[8], Qureg[9] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[12]
-    Rx(theta3) | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    Rx(theta1) | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[1]
-    Rx(theta3) | Qureg[0]
-    Rx(theta1) | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[5]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[5]
-    H | Qureg[13]
-    CX | ( Qureg[5], Qureg[6] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[7], Qureg[8] )
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[5], Qureg[6] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[5]
-    Rx(theta1) | Qureg[8]
-    Rx(theta1) | Qureg[9]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    H | Qureg[0]
-    H | Qureg[4]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta4) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    H | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[0]
-    H | Qureg[0]
-    H | Qureg[5]
-    H | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[13]
-    H | Qureg[10]
-    H | Qureg[5]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[3]
-    H | Qureg[4]
-    H | Qureg[11]
-    H | Qureg[12]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta5) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[4], Qureg[11] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[12]
-    H | Qureg[11]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[3]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    H | Qureg[13]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[3]
-    H | Qureg[1]
-    H | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[4]
-    H | Qureg[1]
-    H | Qureg[1]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    H | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta4) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[11]
-    H | Qureg[5]
-    H | Qureg[1]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[5]
-    Rx(theta1) | Qureg[11]
-    Rx(theta1) | Qureg[12]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta2) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[5], Qureg[11] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[0], Qureg[1] )
-    Rx(theta3) | Qureg[12]
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[5]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[4]
-    H | Qureg[10]
-    H | Qureg[12]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    Rz(theta3) | Qureg[12]
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[12]
-    H | Qureg[10]
-    H | Qureg[4]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[2]
-    H | Qureg[5]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[13]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta5) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[5], Qureg[10] )
-    CX | ( Qureg[4], Qureg[5] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    H | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[5]
-    H | Qureg[2]
-    Rx(theta1) | Qureg[8]
-    H | Qureg[9]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[8], Qureg[9] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta1) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[9], Qureg[10] )
-    CX | ( Qureg[8], Qureg[9] )
-    H | Qureg[11]
-    H | Qureg[10]
-    H | Qureg[9]
-    Rx(theta3) | Qureg[8]
-    Rx(theta1) | Qureg[2]
-    H | Qureg[3]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[11]
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[3], Qureg[10] )
-    CX | ( Qureg[2], Qureg[3] )
-    Rx(theta3) | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[3]
-    Rx(theta3) | Qureg[2]
-    H | Qureg[6]
-    H | Qureg[7]
-    Rx(theta1) | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[6], Qureg[7] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta3) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[7], Qureg[10] )
-    CX | ( Qureg[6], Qureg[7] )
-    H | Qureg[11]
-    Rx(theta3) | Qureg[10]
-    H | Qureg[7]
-    H | Qureg[6]
-    H | Qureg[0]
-    Rx(theta1) | Qureg[1]
-    H | Qureg[10]
-    H | Qureg[11]
-    CX | ( Qureg[0], Qureg[1] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    Rz(theta2) | Qureg[11]
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[1], Qureg[10] )
-    CX | ( Qureg[0], Qureg[1] )
-    H | Qureg[11]
-    H | Qureg[10]
-    Rx(theta3) | Qureg[1]
-    H | Qureg[0]
-    H | Qureg[1]
-    Rx(theta1) | Qureg[4]
-    Rx(theta1) | Qureg[10]
-    Rx(theta1) | Qureg[13]
-    CX | ( Qureg[1], Qureg[2] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[12], Qureg[13] )
-    Rz(theta2) | Qureg[13]
-    CX | ( Qureg[12], Qureg[13] )
-    CX | ( Qureg[11], Qureg[12] )
-    CX | ( Qureg[10], Qureg[11] )
-    CX | ( Qureg[4], Qureg[10] )
-    CX | ( Qureg[3], Qureg[4] )
-    CX | ( Qureg[2], Qureg[3] )
-    CX | ( Qureg[1], Qureg[2] )
-    Rx(theta3) | Qureg[13]
-    Rx(theta3) | Qureg[10]
-    Rx(theta3) | Qureg[4]
-    H | Qureg[1]
+    X | qureg[0]
+    X | qureg[1]
+    X | qureg[2]
+    X | qureg[3]
+    X | qureg[4]
+    X | qureg[5]
+    X | qureg[6]
+    X | qureg[7]
+    X | qureg[8]
+    X | qureg[9]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[6]
+    H | qureg[7]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    H | qureg[7]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[10]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    Rz(theta[0]) | qureg[10]
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[10]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[0]
+    H | qureg[1]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    H | qureg[1]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[8]
+    H | qureg[9]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[9]
+    H | qureg[8]
+    H | qureg[2]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[3]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[8]
+    H | qureg[9]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[13]
+    H | qureg[12]
+    H | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[2]
+    H | qureg[1]
+    H | qureg[4]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    H | qureg[4]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[6]
+    H | qureg[7]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[13]
+    H | qureg[12]
+    H | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[3]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[11]
+    H | qureg[10]
+    H | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[8]
+    H | qureg[9]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    H | qureg[0]
+    H | qureg[1]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    H | qureg[1]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[2]
+    H | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    H | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[1]
+    H | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[11]
+    H | qureg[5]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[4]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    H | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[4]
+    H | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    H | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[9]
+    H | qureg[8]
+    H | qureg[4]
+    H | qureg[5]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    H | qureg[5]
+    H | qureg[4]
+    H | qureg[2]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[3]
+    H | qureg[2]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[7]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[1]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    H | qureg[12]
+    H | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[2]
+    H | qureg[3]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    H | qureg[3]
+    H | qureg[2]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[3]
+    H | qureg[1]
+    H | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    H | qureg[4]
+    H | qureg[1]
+    H | qureg[2]
+    H | qureg[5]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    H | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[5]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    H | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[3]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    H | qureg[12]
+    H | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[4]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[3]
+    H | qureg[8]
+    H | qureg[9]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[9]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[3]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    H | qureg[3]
+    H | qureg[2]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[4]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[12]
+    H | qureg[11]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[3]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[4]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    H | qureg[2]
+    H | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[10]
+    H | qureg[4]
+    H | qureg[2]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[6]
+    H | qureg[7]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[9]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[6]
+    H | qureg[7]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[10]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    Rz(theta[1]) | qureg[10]
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[10]
+    H | qureg[0]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[0]
+    H | qureg[3]
+    H | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[11]
+    H | qureg[5]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[9]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[3]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[5]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[13]
+    H | qureg[12]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[3]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[4]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    H | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[2]
+    H | qureg[0]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[3]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    H | qureg[0]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[2]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[7]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[3]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[3]
+    H | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    H | qureg[4]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[5]
+    H | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    H | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[1]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[11]
+    H | qureg[10]
+    H | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[5]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    H | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[6]
+    H | qureg[7]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[11]
+    H | qureg[10]
+    H | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[12]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[5]
+    H | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    H | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[10]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    Rz(theta[3]) | qureg[10]
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[10]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[8]
+    H | qureg[9]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    H | qureg[2]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    H | qureg[2]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[9]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[11]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[3]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[10]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    Rz(theta[2]) | qureg[10]
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[10]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[0]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[5]
+    H | qureg[0]
+    H | qureg[3]
+    H | qureg[4]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    H | qureg[4]
+    H | qureg[3]
+    H | qureg[0]
+    H | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    H | qureg[5]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[5]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    H | qureg[10]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[7]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    Rx(theta[0]) | qureg[0]
+    H | qureg[5]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    H | qureg[10]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[4]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[5]
+    H | qureg[4]
+    H | qureg[1]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[4]
+    H | qureg[1]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[4]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[1]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[11]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[4]
+    H | qureg[5]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    H | qureg[5]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[5]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[11]
+    H | qureg[10]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[6]
+    H | qureg[7]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    H | qureg[7]
+    H | qureg[6]
+    H | qureg[6]
+    H | qureg[7]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[7]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[3]
+    H | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[7]
+    H | qureg[6]
+    H | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[1]
+    H | qureg[0]
+    H | qureg[2]
+    H | qureg[3]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    H | qureg[3]
+    H | qureg[2]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[0]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[1], qureg[12] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[0]
+    H | qureg[0]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    H | qureg[0]
+    H | qureg[4]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[5], qureg[12] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    H | qureg[5]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[3]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[4]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[0]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[3], qureg[12] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    Rx(theta[0]) | qureg[6]
+    Rx(theta[0]) | qureg[7]
+    Rx(theta[0]) | qureg[12]
+    H | qureg[13]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[7], qureg[12] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[7]
+    Rx(theta[2]) | qureg[6]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[2]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[0]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[3]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[0]
+    H | qureg[8]
+    H | qureg[9]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    H | qureg[9]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[4]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[1]
+    H | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    H | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[1]
+    H | qureg[8]
+    H | qureg[9]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    H | qureg[9]
+    H | qureg[8]
+    Rx(theta[0]) | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    Rx(theta[0]) | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    H | qureg[12]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[9], qureg[12] )
+    CX | ( qureg[8], qureg[9] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[12]
+    Rx(theta[2]) | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    Rx(theta[0]) | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[1]
+    Rx(theta[2]) | qureg[0]
+    Rx(theta[0]) | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[5]
+    H | qureg[13]
+    CX | ( qureg[5], qureg[6] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[7], qureg[8] )
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[5], qureg[6] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[5]
+    Rx(theta[0]) | qureg[8]
+    Rx(theta[0]) | qureg[9]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    H | qureg[0]
+    H | qureg[4]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[3]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    H | qureg[10]
+    H | qureg[4]
+    H | qureg[0]
+    H | qureg[0]
+    H | qureg[5]
+    H | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[13]
+    H | qureg[10]
+    H | qureg[5]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[3]
+    H | qureg[4]
+    H | qureg[11]
+    H | qureg[12]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[4]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[4], qureg[11] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[12]
+    H | qureg[11]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[3]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[4]
+    H | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    H | qureg[13]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[3]
+    H | qureg[1]
+    H | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[4]
+    H | qureg[1]
+    H | qureg[1]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    H | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[3]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[11]
+    H | qureg[5]
+    H | qureg[1]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[5]
+    Rx(theta[0]) | qureg[11]
+    Rx(theta[0]) | qureg[12]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[1]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[5], qureg[11] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[0], qureg[1] )
+    Rx(theta[2]) | qureg[12]
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[5]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[4]
+    H | qureg[10]
+    H | qureg[12]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    Rz(theta[2]) | qureg[12]
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[12]
+    H | qureg[10]
+    H | qureg[4]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[2]
+    H | qureg[5]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[13]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[4]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[5], qureg[10] )
+    CX | ( qureg[4], qureg[5] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    H | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[5]
+    H | qureg[2]
+    Rx(theta[0]) | qureg[8]
+    H | qureg[9]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[8], qureg[9] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[0]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[9], qureg[10] )
+    CX | ( qureg[8], qureg[9] )
+    H | qureg[11]
+    H | qureg[10]
+    H | qureg[9]
+    Rx(theta[2]) | qureg[8]
+    Rx(theta[0]) | qureg[2]
+    H | qureg[3]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[11]
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[3], qureg[10] )
+    CX | ( qureg[2], qureg[3] )
+    Rx(theta[2]) | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[3]
+    Rx(theta[2]) | qureg[2]
+    H | qureg[6]
+    H | qureg[7]
+    Rx(theta[0]) | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[6], qureg[7] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[2]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[7], qureg[10] )
+    CX | ( qureg[6], qureg[7] )
+    H | qureg[11]
+    Rx(theta[2]) | qureg[10]
+    H | qureg[7]
+    H | qureg[6]
+    H | qureg[0]
+    Rx(theta[0]) | qureg[1]
+    H | qureg[10]
+    H | qureg[11]
+    CX | ( qureg[0], qureg[1] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    Rz(theta[1]) | qureg[11]
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[1], qureg[10] )
+    CX | ( qureg[0], qureg[1] )
+    H | qureg[11]
+    H | qureg[10]
+    Rx(theta[2]) | qureg[1]
+    H | qureg[0]
+    H | qureg[1]
+    Rx(theta[0]) | qureg[4]
+    Rx(theta[0]) | qureg[10]
+    Rx(theta[0]) | qureg[13]
+    CX | ( qureg[1], qureg[2] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[12], qureg[13] )
+    Rz(theta[1]) | qureg[13]
+    CX | ( qureg[12], qureg[13] )
+    CX | ( qureg[11], qureg[12] )
+    CX | ( qureg[10], qureg[11] )
+    CX | ( qureg[4], qureg[10] )
+    CX | ( qureg[3], qureg[4] )
+    CX | ( qureg[2], qureg[3] )
+    CX | ( qureg[1], qureg[2] )
+    Rx(theta[2]) | qureg[13]
+    Rx(theta[2]) | qureg[10]
+    Rx(theta[2]) | qureg[4]
+    H | qureg[1]

@@ -107,7 +107,6 @@ VA, VB = dec_kron(MMAT @ Xd @ MMAT.T.conjugate())
 
 #############################################
 theta = inv(Lamda) @ np.angle(np.diag(V1.T.conjugate() @ U2 @ Xd.T.conjugate()))
-print(theta)
 
 X = np.array([[0, 1],
     [1, 0]], dtype=np.complex)
@@ -119,9 +118,6 @@ I2 = np.array([[1 , 0],
     [0 , 1]], dtype=np.complex)
 
 
-# Ra1 = UA
-# Rb1 = UB
-# Ra2 = 1.j/np.sqrt(2) * (X + Z) @ exp_sig_x(theta[0])
 Ra1 = UA
 Rb1 = UB
 Ra2 = 1.j / np.sqrt(2) * (X + Z) @ exp_sig_x(theta[1] + np.pi / 2, -1)
@@ -130,7 +126,6 @@ Rb2 = exp_sig_z(theta[3] , -1)
 Ra3 = -(1j / np.sqrt(2)) * (X + Z)
 Rb3 = exp_sig_z(theta[2] , 1)
 Ra4 = VA @ (I2-1j*X) / np.sqrt(2)
-# Ra4 = np.dot(VA, (I2-1.j*X)/np.sqrt(2))
 Rb4 = VB @ inv((I2 - 1j*X) / np.sqrt(2))
 
 cnot = np.array([[1,0,0,0],
@@ -149,3 +144,11 @@ res = m1 @ cnot @ m2 @ cnot @ m3 @ cnot @m4
 print(res.T.conjugate() @ U)
 
 
+# Y = np.array([[0,-1.j],[1.j,0]])
+# sxx = np.kron(X,X)
+# syy = np.kron(Y,Y)
+# szz = np.kron(Z,Z)
+# I22 = np.kron(I2,I2)
+# UD = expm(-1.j*(theta[1]* sxx + theta[2] * syy + theta[3]*szz))
+# res2 = expm(1.j*theta[0]*I22) @ np.kron(UA, UB) @ UD @ np.kron(VA, VB)
+# print(res2.T.conjugate() @ U)

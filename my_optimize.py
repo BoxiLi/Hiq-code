@@ -6,7 +6,7 @@ from copy import deepcopy
 import projectq
 import numpy as np
 from projectq.backends import CommandPrinter
-from projectq.ops import Measure, All, H, X, Y, Z, H, S, T, CX, CZ, Rx, Ry, Rz, Ph
+from projectq.ops import Allocate, Measure, All, H, X, Y, Z, H, S, T, CX, CZ, Rx, Ry, Rz, Ph
 from projectq.meta import Loop, Compute, Uncompute, Control
 from projectq.setups import restrictedgateset
 from projectq.cengines import (MainEngine,
@@ -20,7 +20,7 @@ import projectq.setups.decompositions
 
 from mpi4py import MPI
 
-backend = SimulatorMPI(gate_fusion=True, num_local_qubits=10)
+backend = SimulatorMPI(gate_fusion=True, num_local_qubits=20)
 
 cache_depth = 10
 rule_set = DecompositionRuleSet(modules=[projectq.setups.decompositions])
@@ -238,9 +238,9 @@ def self_merge_multi(self, others, target_gates):
         raise NotMergeable
 
 
-Command.self_merge_multi = self_merge_multi
-LocalOptimizer._optimize = my_optimize
-LocalOptimizer.multigate_merge = multigate_merge
+# Command.self_merge_multi = self_merge_multi
+# LocalOptimizer._optimize = my_optimize
+# LocalOptimizer.multigate_merge = multigate_merge
 #################################
 
 
@@ -248,27 +248,20 @@ LocalOptimizer.multigate_merge = multigate_merge
 restric_engine = restrictedgateset.get_engine_list(one_qubit_gates=(X,Y,Z,H,S,T,Rx,Ry,Rz),
                                                 two_qubit_gates=(CZ,CX))
 
-eng = HiQMainEngine(backend, engine_list=[CommandPrinter()] + engines + [CommandPrinter()])
+# eng = HiQMainEngine(backend, engine_list=[CommandPrinter()] + engines + [CommandPrinter()])
+eng = HiQMainEngine(backend, engine_list= engines)
+Qureg = eng.allocate_qureg(14)
 
-qureg = eng.allocate_qureg(2)
+theta1=0
+theta2=0
+theta3=0
+theta4=0
+theta5=0
 
-H | qureg[0]
-X | qureg[0]
-H | qureg[0]
-Z | qureg[0]
-H | qureg[0]
-CZ | (qureg[0], qureg[1])
-H | qureg[0]
-H | qureg[0]
-X | qureg[0]
-CZ | (qureg[0], qureg[1])
-H | qureg[0]
-Z | qureg[0]
-H | qureg[0]
-H | qureg[0]
-X | qureg[1]
-Z | qureg[1]
+from circuit import example_circuit
 
-All(Measure) | qureg
+example_circuit(Qureg, theta1, theta2, theta3, theta4, theta5)
+
+All(Measure) | Qureg
 
 
