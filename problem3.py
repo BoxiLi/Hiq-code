@@ -34,8 +34,8 @@ engines = [TagRemover()
             ]
 
 theta1=np.pi/2
-theta2=0
-theta3=0
+theta2=np.pi/2
+theta3=np.pi/2
 theta4=0
 theta5=0
 
@@ -56,10 +56,12 @@ def measure_amplitude(para):
     # example_circuit(Qureg, para)
     X | Qureg[0]
     # amp = eng.backend.get_probability("00001111111111", Qureg)
+    eng.flush()
+
     amp = eng.backend.get_probability("00", Qureg)
     print(1-amp)
     All(Measure) | Qureg
-    All(Deallocate) | Qureg
+    # All(Deallocate) | Qureg
     eng.flush()
     del Qureg
     if amp > 0.5:
@@ -69,13 +71,14 @@ def measure_amplitude(para):
 measure_amplitude(para)
 
 
-# A = scipy.optimize.minimize(measure_amplitude, para,
-# bounds = [(-np.pi, np.pi),
-#           (-np.pi, np.pi),
-#           (-np.pi, np.pi),
-#           (-np.pi, np.pi),
-#           (-np.pi, np.pi)]
-# )
+print(scipy.optimize.minimize(measure_amplitude, para,
+bounds = [(-np.pi, np.pi),
+          (-np.pi, np.pi),
+          (-np.pi, np.pi),
+          (-np.pi, np.pi),
+          (-np.pi, np.pi)]
+)
+)
 
 
 
