@@ -41,4 +41,36 @@ UB = temp[0:2, 0:2]
 
 res = np.linalg.norm(np.kron(UA, UB)-temp)
 print(res)
+#############################################
+theta = inv(Lamda) @ np.angle(np.diag(V1.T.conjugate() @ U2 @ Xd.T.conjugate()))
+print(theta)
 
+X = [[0, 1],
+     [1, 0]]
+
+Z = [[ 1,  0],
+     [ 0, -1]]
+
+I2 = [[1 , 0],
+      [0 , 1]]
+
+
+def sig_x(A, delta_t):
+    x =  A * delta_t / 2
+    return np.array([[np.cos(x), -1j * np.sin(x)],
+                     [-1j * np.sin(x), np.cos(x)]])
+
+def sig_z(A, delta_t):
+    x = A * delta_t / 2
+    return np.array([[-np.exp(1j * x), 0],
+                      [0, np.exp(1j * x)]])
+
+
+Ra1 = UA
+Rb1 = UB
+Ra2 = (1j / np.sqrt(2)) * (X + Z) * sig_x(theta[0] + np.pi / 2 , 1)
+Rb2 = sig_z(theta[2] , 1)
+Ra3 = (1j / np.sqrt(2)) * (X + Z)
+Rb3 = sig_z(-1 * theta[1] , 1)
+Ra4 = VA @ (I2-1j*X) * (1 / np.sqrt(2))
+Rb4 = inv(VB @ (I2-1j*X) * (1 / np.sqrt(2)))
