@@ -56,6 +56,7 @@ def measure_amplitude(para):
     # example_circuit(Qureg, para)
     X | Qureg[0]
     # amp = eng.backend.get_probability("00001111111111", Qureg)
+    eng.flush()
     amp = eng.backend.get_probability("00", Qureg)
     print(1-amp)
     All(Measure) | Qureg
@@ -66,7 +67,6 @@ def measure_amplitude(para):
         amp = 1
     return 1-amp
 
-measure_amplitude(para)
 
 
 # A = scipy.optimize.minimize(measure_amplitude, para,
