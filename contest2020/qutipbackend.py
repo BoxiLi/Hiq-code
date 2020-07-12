@@ -99,7 +99,7 @@ class QutipBackend(BasicEngine):
                     logical_id = t.logical_qubit_id
                     break
             assert logical_id is not None
-            self._measured_ids += [logical_id]
+            # self._measured_ids += [logical_id]
         elif gate == NOT and get_control_count(cmd) == 1:
             ctrl_pos = cmd.control_qubits[0].id
             qb_pos = cmd.qubits[0][0].id
@@ -149,7 +149,7 @@ class QutipBackend(BasicEngine):
                 writing_file.write(self.qasm)
             qutip_circuit = read_qasm(f.name)
         
-        self.processor.load_circuit(qutip_circuit)
+        self.processor.load_circuit(qutip_circuit, parallel=True)
 
         if self.final_state is None:
             self.final_state = basis([2] * (max_qubit_id + 1))
