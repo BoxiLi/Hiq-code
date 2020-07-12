@@ -1237,6 +1237,20 @@ class QubitCircuit:
                 raise ValueError("%s is not a valid two-qubit basis gate"
                                  % basis)
 
+        temp = []
+        for gate in self.gates:
+            if gate.name in ("Z", "X", "Y"):
+                new_gate = deepcopy(gate)
+                new_gate.name = "R" + gate.name
+                new_gate.arg_value = np.pi
+                if gate.name in ("RZ", "RX"):
+                    temp += [new_gate, Gate("GLOBALPHASE", arg_value=np.pi)]
+                else:
+                    temp.append(new_gate)
+            else:
+                temp.append(gate)
+        self.gates = temp
+
         for gate in self.gates:
             try:
                 self._resolve_to_universal(gate, temp_resolved,

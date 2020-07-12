@@ -87,12 +87,12 @@ class SpinChainCompiler(GateCompiler):
     def __init__(self, N, params, setup, global_phase, num_ops):
         super(SpinChainCompiler, self).__init__(
             N=N, params=params, num_ops=num_ops)
-        self.gate_decomps = {"ISWAP": self.iswap_dec,
+        self.gate_decomps = {**self.gate_decomps, **{"ISWAP": self.iswap_dec,
                              "SQRTISWAP": self.sqrtiswap_dec,
                              "RZ": self.rz_dec,
                              "RX": self.rx_dec,
                              "GLOBALPHASE": self.globalphase_dec
-                             }
+                             }}
         self.N = N
         self._sx_ind = list(range(0, N))
         self._sz_ind = list(range(N, 2*N))

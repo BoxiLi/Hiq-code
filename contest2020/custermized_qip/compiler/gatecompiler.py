@@ -30,7 +30,9 @@
 #    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 #    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###############################################################################
+from copy import deepcopy
 import numpy as np
+from ..circuit import Gate
 from ..scheduler import Instruction, Scheduler
 
 
@@ -88,6 +90,10 @@ class GateCompiler(object):
         self.N = N
         self.params = params
         self.num_ops = num_ops
+        # self.gate_decomps = {"X": self.x_dec,
+        #                      "Y": self.y_dec,
+        #                      "Z": self.z_dec,
+        #                      }
 
     def decompose(self, gates, parallel=True):
         """
@@ -133,7 +139,6 @@ class GateCompiler(object):
                     tlist[last_time_step + 1: last_time_step + instruction.step_num + 1] = instruction.tlist + tlist[last_time_step]
                     coeffs[pulse_ind, last_time_step: last_time_step + instruction.step_num] = coeff
                 last_time_step += instruction.step_num
-
             return tlist, coeffs
 
 
@@ -162,3 +167,34 @@ class GateCompiler(object):
                 coeffs[i] = np.concatenate(coeffs[i])
         return tlist, coeffs
 
+    # def x_dec(self, gate):
+    #     gate = deepcopy(gate)
+    #     gate.name = "RX"
+    #     gate.arg_value = np.pi
+    #     try:
+    #         self.global_phase += np.pi
+    #     except AttributeError:
+    #         pass
+    #     return self.gate_decomps["RX"](gate)
+
+    # def z_dec(self, gate):
+    #     gate = deepcopy(gate)
+    #     gate.name = "RZ"
+    #     gate.arg_value = np.pi
+    #     try:
+    #         self.global_phase += np.pi
+    #     except AttributeError:
+    #         pass
+    #     return self.gate_decomps["RZ"](gate)
+
+    # def y_dec(self, gate):
+    #     gate = deepcopy(gate)
+    #     gate.name = "RY"
+    #     gate.arg_value = np.pi
+    #     return self.gate_decomps["RY"](gate)
+
+    # def globalphase_dec(self, gate):
+    #     """
+    #     Compiler for the GLOBALPHASE gate
+    #     """
+    #     pass
