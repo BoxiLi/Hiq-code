@@ -12,7 +12,8 @@ from custermized_qip.device import LinearSpinChain
 # Choose a QuTiP processor as the backend
 engine_list  =  []
 num_qubits = 2
-eng = MainEngine(QutipBackend(LinearSpinChain(num_qubits)), engine_list=engine_list)
+processor = LinearSpinChain(num_qubits, t1=500.)
+eng = MainEngine(QutipBackend(processor), engine_list=engine_list)
 
 # Define a circuit in ProjectQ
 quregs = eng.allocate_qureg(num_qubits)
@@ -24,6 +25,6 @@ Y | quregs[0]
 X | quregs[0]
 eng.flush()
 
-# get the simulation result
+# Get the simulation result
 result = eng.backend.final_state
 print(result)
