@@ -75,19 +75,21 @@ class DispersiveCavityQED(ModelProcessor):
         The number of energy levels in the resonator.
 
     deltamax: int or list, optional
-        The coefficients of sigma-x for each of the qubits in the system.
+        The coefficients of sigma-z for each of the qubits in the system.
 
     epsmax: int or list, optional
-        The coefficients of sigma-z for each of the qubits in the system.
+        The coefficients of sigma-x for each of the qubits in the system.
 
     w0: int, optional
         The base frequency of the resonator.
 
     eps: int or list, optional
-        The epsilon for each of the qubits in the system.
+        The epsilon for each of the qubits in the system. 
+        Classical drive strength
 
     delta: int or list, optional
-        The epsilon for each of the qubits in the system.
+        The delta for each of the qubits in the system.
+        frequency difference between qubit and resonator
 
     g: int or list, optional
         The interaction strength for each of the qubit with the resonator.
@@ -129,11 +131,11 @@ class DispersiveCavityQED(ModelProcessor):
         The detuning with respect to w0 calculated
         from wq and w0 for each qubit.
     """
-
+#all the frequency unit is MHz
     def __init__(self, N, correct_global_phase=True,
-                 num_levels=10, deltamax=1.0,
-                 epsmax=9.5, w0=10., wq=None, eps=9.5,
-                 delta=0.0, g=0.01, t1=None, t2=None):
+                 num_levels=10, deltamax=100.0,
+                 epsmax=50.0, w0=5e3., wq=None, eps=50.0,
+                 delta=0.0, g=10.0, t1=None, t2=None):
         super(DispersiveCavityQED, self).__init__(
             N, correct_global_phase=correct_global_phase,
             t1=t1, t2=t2)
@@ -192,10 +194,10 @@ class DispersiveCavityQED(ModelProcessor):
             The number of energy levels in the resonator.
 
         deltamax: list
-            The coefficients of sigma-x for each of the qubits in the system.
+            The coefficients of sigma-z for each of the qubits in the system.
 
         epsmax: list
-            The coefficients of sigma-z for each of the qubits in the system.
+            The coefficients of sigma-x for each of the qubits in the system.
 
         wo: int
             The base frequency of the resonator.
