@@ -31,9 +31,7 @@
 #    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###############################################################################
 import warnings
-
 import numpy as np
-
 from qutip.operators import tensor, identity, destroy, sigmax, sigmaz
 from qutip.states import basis
 from ..circuit import QubitCircuit, Gate
@@ -44,20 +42,21 @@ from qutip.qobj import Qobj
 from qutip.qobjevo import QobjEvo
 from ..pulse import Pulse
 from ..compiler.gatecompiler import GateCompiler
-from ..compiler import CavityQEDCompiler
+from ..compiler import CircuitQEDCompiler
 
-
-__all__ = ['DispersiveCavityQED']
-
-
-class DispersiveCavityQED(ModelProcessor):
+__all__ = ['Circuit_QED']
+class Circuit_QED(ModelProcessor):
     """
     The processor based on the physical implementation of
-    a dispersive cavity QED system.
+    a circuit QED system.
     The available Hamiltonian of the system is predefined.
     For a given pulse amplitude matrix, the processor can
     calculate the state evolution under the given control pulse,
     either analytically or numerically.
+
+    Our system is severl superconducting qubit couple to one 
+    electric resonator as a quantum bus to achieve two qubit operation.
+
     (Only additional attributes are documented here, for others please
     refer to the parent class :class:`qutip.qip.device.ModelProcessor`)
 
@@ -85,11 +84,12 @@ class DispersiveCavityQED(ModelProcessor):
 
     eps: int or list, optional
         The epsilon for each of the qubits in the system. 
-        Classical drive strength
+        Classical drive strength for x_direction rotation
 
     delta: int or list, optional
         The delta for each of the qubits in the system.
         frequency difference between qubit and resonator
+        delta=qubit_fre-resonator_fre
 
     g: int or list, optional
         The interaction strength for each of the qubit with the resonator.
@@ -101,6 +101,9 @@ class DispersiveCavityQED(ModelProcessor):
     t2: list of float
         Characterize the decoherence of dephasing for
         each qubit. A list of size `N` or a float for all qubits.
+
+    Could be added:
+        t1 and t2 of resonator
 
     Attributes
     ----------
@@ -131,12 +134,12 @@ class DispersiveCavityQED(ModelProcessor):
         The detuning with respect to w0 calculated
         from wq and w0 for each qubit.
     """
-#all the frequency unit is MHz
+    #all the frequency unit is MHz
     def __init__(self, N, correct_global_phase=True,
                  num_levels=10, deltamax=100.0,
                  epsmax=50.0, w0=5e3, wq=None, eps=50.0,
                  delta=0.0, g=10.0, t1=None, t2=None):
-        super(DispersiveCavityQED, self).__init__(
+        super(Circuit_QED, self).__init__(
             N, correct_global_phase=correct_global_phase,
             t1=t1, t2=t2)
         self.correct_global_phase = correct_global_phase
@@ -152,7 +155,7 @@ class DispersiveCavityQED(ModelProcessor):
 
     def set_up_ops(self, N):
         """
-        Generate the Hamiltonians for the spinchain model and save them in the
+        Generate the Hamiltonians for the circuitqed model and save them in the
         attribute `ctrls`.
 
         Parameters
@@ -178,7 +181,6 @@ class DispersiveCavityQED(ModelProcessor):
             self.pulses.append(
                 Pulse(a.dag() * sm + a * sm.dag(),
                       list(range(N+1)), spline_kind=self.spline_kind))
-
     def set_up_params(
             self, N, num_levels, deltamax,
             epsmax, w0, wq, eps, delta, g):
@@ -232,17 +234,17 @@ class DispersiveCavityQED(ModelProcessor):
         self._params["g"] = g
 
         # computed
-        self.wq = np.sqrt(eps**2 + delta**2)
-        self.Delta = self.wq - w0
+        self.wq = w0+delta
+        self.Delta=delta
 
         # rwa/dispersive regime tests
-        if any(g / (w0 - self.wq) > 0.05):
+        if any(g / (self.Delta) > 0.05):
             warnings.warn("Not in the dispersive regime")
 
-        if any((w0 - self.wq)/(w0 + self.wq) > 0.05):
+        if any(1-(w0 - self.wq)/(w0 + self.wq) > 0.05):
             warnings.warn(
                 "The rotating-wave approximation might not be valid.")
-
+        
     @property
     def sx_ops(self):
         return self.ctrls[0: self.N]
@@ -329,7 +331,7 @@ class DispersiveCavityQED(ModelProcessor):
             one Hamiltonian.
         """
         gates = self.optimize_circuit(qc).gates
-        compiler = CavityQEDCompiler(
+        compiler = CircuitQEDCompiler(
             self.N, self._params,
             global_phase=0., num_ops=len(self.ctrls))
         tlist, self.coeffs, self.global_phase = compiler.decompose(gates, parallel)
