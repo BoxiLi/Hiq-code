@@ -80,7 +80,7 @@ class Circuit_QED(ModelProcessor):
         The coefficients of sigma-x for each of the qubits in the system.
 
     w0: int, optional
-        The base frequency of the resonator.
+        The base frequency of the qubits.
 
     eps: int or list, optional
         The epsilon for each of the qubits in the system. 
@@ -92,7 +92,7 @@ class Circuit_QED(ModelProcessor):
         delta=qubit_fre-resonator_fre
 
     g: int or list, optional
-        The interaction strength for each of the qubit with the resonator.
+        The  switchable interaction strength for each of the qubit.
 
     t1: list or float
         Characterize the decoherence of amplitude damping for
@@ -136,9 +136,9 @@ class Circuit_QED(ModelProcessor):
     """
     #all the frequency unit is MHz
     def __init__(self, N, correct_global_phase=True,
-                 num_levels=10, deltamax=100.0,
-                 epsmax=50.0, w0=5e3, wq=None, eps=50.0,
-                 delta=0.0, g=10.0, t1=None, t2=None):
+                 num_levels=10, deltamax=1000.0,
+                 epsmax=50.0, w0=5e3, wq=None, eps=1000.0,
+                 delta=1000, g=100.0, t1=None, t2=None):
         super(Circuit_QED, self).__init__(
             N, correct_global_phase=correct_global_phase,
             t1=t1, t2=t2)
@@ -214,7 +214,7 @@ class Circuit_QED(ModelProcessor):
             The delta for each of the qubits in the system.
 
         g: list
-            The interaction strength for each of the qubit with the resonator.
+            The switchable interaction strength for the qubit.
 
         Notes
         -----
@@ -238,9 +238,6 @@ class Circuit_QED(ModelProcessor):
         self.Delta=delta
 
         # rwa/dispersive regime tests
-        if any(g / (self.Delta) > 0.05):
-            warnings.warn("Not in the dispersive regime")
-
         if any(1-(w0 - self.wq)/(w0 + self.wq) > 0.05):
             warnings.warn(
                 "The rotating-wave approximation might not be valid.")
