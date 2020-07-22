@@ -29,4 +29,7 @@ eng.flush()
 final_state = eng.backend.get_final_state()
 # The first two qubits should never be 00 (ideally, here not really)
 print(fidelity(final_state.ptrace([0, 1]), basis([2, 2])))
+# 画 pulse:
+fig, ax = eng.backend.processor.plot_pulses()
+fig.savefig("DJ_algorithm.pdf")
 
