@@ -1,4 +1,4 @@
-from qutip import basis, fidelity
+from qutip import basis, fidelity, Options
 
 from custermized_qip.device import Circuit_QED
 from custermized_qip.circuit import QubitCircuit
@@ -14,7 +14,7 @@ processor = Circuit_QED(2)
 # 加载circuit
 processor.load_circuit(circuit)
 # 计算得到final state （初始值为零态）
-final_state = processor.run_state(basis([10, 2, 2])).states[-1]
+final_state = processor.run_state(basis([10, 2, 2]), option=Options(nsteps=10000)).states[-1]
 # print保真度
 print(fidelity(final_state.ptrace(1), basis(2,1)))
 # 画pulse图
