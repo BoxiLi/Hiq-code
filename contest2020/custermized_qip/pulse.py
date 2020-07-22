@@ -398,7 +398,7 @@ class Pulse():
             c_ops[i] = _merge_qobjevo([c_op], full_tlist)
         return qu, c_ops
 
-    def get_full_tlist(self):
+    def get_full_tlist(self, tol=1.0e-8):
         """
         Return the full tlist of the pulses and noise.
         It means that if different `tlist`s are present, they will be merged
@@ -420,6 +420,8 @@ class Pulse():
         if not all_tlists:
             return None
         full_tlist = np.unique(np.sort(np.hstack(all_tlists)))
+        diff = np.append(True, np.diff(full_tlist))
+        full_tlist = full_tlist[diff > tol]
         return full_tlist
 
     def print_info(self):
@@ -524,7 +526,7 @@ class Drift():
         return self.get_ideal_qobjevo(dims), []
 
 
-def _find_common_tlist(qobjevo_list):
+def _find_common_tlist(qobjevo_list, tol=1.0e-8):
     """
     Find the common `tlist` of a list of :class:`qutip.QobjEvo`.
     """
@@ -533,6 +535,8 @@ def _find_common_tlist(qobjevo_list):
     if not all_tlists:
         return None
     full_tlist = np.unique(np.sort(np.hstack(all_tlists)))
+    diff = np.append(True, np.diff(full_tlist))
+    full_tlist = full_tlist[diff > tol]
     return full_tlist
 
 ########################################################################
