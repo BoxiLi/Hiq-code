@@ -153,7 +153,7 @@ class QutipBackend(BasicEngine):
                 writing_file.write(self.qasm)
             qutip_circuit = read_qasm(f.name)
         
-        self.processor.load_circuit(qutip_circuit, parallel=True)
+        self.processor.load_circuit(qutip_circuit, parallel=False)
 
         if self.final_state is None:
             dims = self.processor.dims
@@ -176,5 +176,10 @@ class QutipBackend(BasicEngine):
                 self._run()
                 self._reset()
 
-    def get_final_state(self):
-        return self.final_state
+    def get_final_state(self, qubits_only=True):
+        dims = self.final_state.dims[0]
+        qubits_ind = [i for i in range(len(dims)) if dims[i]==2]
+        if not qubits_only or len(dims) == len(qubits_ind):
+            return self.final_state
+        else:
+            return self.final_state.ptrace(qubits_ind)
