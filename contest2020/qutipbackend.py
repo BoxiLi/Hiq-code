@@ -30,7 +30,7 @@ from qutip import basis, Options
 # import projectq.setups
 
 class QutipBackend(BasicEngine):
-    def __init__(self, processor):
+    def __init__(self, processor, options=None):
         """
         Args:
             processor (qutip.qip.device.Processor): The simulation model in qutip. E.g. LinearSpinchain, CavityQED
@@ -40,6 +40,10 @@ class QutipBackend(BasicEngine):
         self._reset()
         self.qasm = ""
         self._allocated_qubits = set()
+        if options is None:
+            self.options = Options()
+        else:
+            self.options = options
         self.final_state = None
 
     def is_available(self, cmd):
@@ -152,9 +156,10 @@ class QutipBackend(BasicEngine):
         self.processor.load_circuit(qutip_circuit, parallel=True)
 
         if self.final_state is None:
-            self.final_state = basis([2] * (max_qubit_id + 1))
+            dims = self.processor.dims
+            self.final_state = basis(dims)
         
-        self.final_state = self.processor.run_state(self.final_state).states[-1]
+        self.final_state = self.processor.run_state(self.final_state, options=self.options).states[-1]
 
     def receive(self, command_list):
         """
