@@ -303,17 +303,17 @@ class RelaxationNoise(Noise):
             non-trivial relaxation noise.
         """
         if isinstance(dims, list):
-            for d in dims:
-                if d != 2:
-                    raise ValueError(
-                        "Relaxation noise is defined only for qubits system")
+            # for d in dims:
+            #     if d != 2:
+            #         raise ValueError(
+            #             "Relaxation noise is defined only for qubits system")
             N = len(dims)
         else:
             N = dims
 
-        self.t1 = self._T_to_list(self.t1, N)
-        self.t2 = self._T_to_list(self.t2, N)
-        if len(self.t1) != N or len(self.t2) != N:
+        self.t1 = self._T_to_list(self.t1, len(dims))
+        self.t2 = self._T_to_list(self.t2, len(dims))
+        if len(self.t1) != len(dims) or len(self.t2) != len(dims):
             raise ValueError(
                 "Length of t1 or t2 does not match N, "
                 "len(t1)={}, len(t2)={}".format(
@@ -325,6 +325,8 @@ class RelaxationNoise(Noise):
         else:
             targets = self.targets
         for qu_ind in targets:
+            if dims[qu_ind] != 2:
+                continue
             t1 = self.t1[qu_ind]
             t2 = self.t2[qu_ind]
             if t1 is not None:

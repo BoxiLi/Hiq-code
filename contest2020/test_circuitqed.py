@@ -11,7 +11,7 @@ circuit.add_gate("Z", targets=0)
 circuit.add_gate("ISWAP", targets=[0,1])
 
 # 定义一个processor
-processor = Circuit_QED(2)
+processor = Circuit_QED(2, t1=1, t2=0.2)
 # 加载circuit
 processor.load_circuit(circuit)
 # 计算得到final state （初始值为零态）
