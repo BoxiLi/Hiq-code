@@ -33,5 +33,5 @@
 
 from .gatecompiler import GateCompiler
 from .cavityqedcompiler import CavityQEDCompiler
-from .circuit_qed_compiler import CircuitQEDCompiler
+from .circuitqedcompiler import CircuitQEDCompiler
 from .spinchaincompiler import SpinChainCompiler

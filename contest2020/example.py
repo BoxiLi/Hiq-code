@@ -7,11 +7,11 @@ from projectq import MainEngine
 from projectq.ops import All, H, X, Z, Y, T, CNOT, Measure, FlushGate
 
 from qutipbackend import QutipBackend
-from custermized_qip.device import Circuit_QED
+from custermized_qip.device import CircuitQED
 
 # Choose a QuTiP processor as the backend
 num_qubits = 3
-processor = Circuit_QED(num_qubits)
+processor = CircuitQED(num_qubits)
 eng = MainEngine(QutipBackend(processor, options=Options(nsteps=10000)))
 # eng = MainEngine()
 
@@ -31,5 +31,4 @@ final_state = eng.backend.get_final_state()
 print(fidelity(final_state.ptrace([0, 1]), basis([2, 2])))
 # 画 pulse:
 fig, ax = eng.backend.processor.plot_pulses()
-fig.savefig("DJ_algorithm.pdf")
-
+fig.savefig("DJ_algorithm.png")
