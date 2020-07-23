@@ -147,11 +147,7 @@ class QutipBackend(BasicEngine):
         self.qasm = ("OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[{nq}];\ncreg c[{nq}];"
             + self.qasm).format(nq=max_qubit_id + 1)
         
-        import tempfile
-        with tempfile.NamedTemporaryFile('r+') as f:
-            with open(f.name, 'r+') as writing_file:
-                writing_file.write(self.qasm)
-            qutip_circuit = read_qasm(f.name)
+        qutip_circuit = read_qasm(self.qasm, strmode=True)
         
         self.processor.load_circuit(qutip_circuit, parallel=False)
 
