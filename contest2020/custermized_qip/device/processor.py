@@ -249,7 +249,7 @@ class Processor(object):
         for i, coeff in enumerate(coeffs_list):
             self.pulses[i].coeff = coeff
 
-    def get_full_tlist(self, tol=1.0e-8):
+    def get_full_tlist(self, tol=1.0e-10):
         """
         Return the full tlist of the ideal pulses.
         If different pulses have different time steps,

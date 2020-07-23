@@ -398,7 +398,7 @@ class Pulse():
             c_ops[i] = _merge_qobjevo([c_op], full_tlist)
         return qu, c_ops
 
-    def get_full_tlist(self, tol=1.0e-8):
+    def get_full_tlist(self, tol=1.0e-10):
         """
         Return the full tlist of the pulses and noise.
         It means that if different `tlist`s are present, they will be merged
@@ -526,7 +526,7 @@ class Drift():
         return self.get_ideal_qobjevo(dims), []
 
 
-def _find_common_tlist(qobjevo_list, tol=1.0e-8):
+def _find_common_tlist(qobjevo_list, tol=1.0e-10):
     """
     Find the common `tlist` of a list of :class:`qutip.QobjEvo`.
     """
@@ -585,7 +585,7 @@ def _merge_qobjevo(qobjevo_list, full_tlist=None):
     return qobjevo
 
 
-def _fill_coeff(old_coeffs, old_tlist, full_tlist, args=None):
+def _fill_coeff(old_coeffs, old_tlist, full_tlist, args=None, tol=1.0e-10):
     """
     Make a step function coefficients compatible with a longer `tlist` by
     filling the empty slot with the nearest left value.
@@ -603,13 +603,14 @@ def _fill_coeff(old_coeffs, old_tlist, full_tlist, args=None):
         new_coeff = np.zeros(new_n)
         for new_ind in range(new_n):
             t = full_tlist[new_ind]
-            if t < old_tlist[0]:
+            if old_tlist[0] - t > tol:
                 new_coeff[new_ind] = 0.
                 continue
-            if t > old_tlist[-1]:
+            if t - old_tlist[-1] > tol:
                 new_coeff[new_ind] = 0.
                 continue
-            if old_tlist[old_ind+1] <= t:
+            # tol is required because of the floating-point error
+            if old_tlist[old_ind+1] <= t + tol:
                 old_ind += 1
             new_coeff[new_ind] = old_coeffs[old_ind]
     else:
