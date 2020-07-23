@@ -36,4 +36,4 @@ from .spinchain import (
 from .cavityqed import DispersiveCavityQED
 from .optpulseprocessor import OptPulseProcessor
 from .modelprocessor import ModelProcessor
-from .circuitqed import Circuit_QED
+from .circuitqed import CircuitQED

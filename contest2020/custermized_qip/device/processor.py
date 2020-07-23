@@ -745,7 +745,7 @@ class Processor(object):
             label_list.append(pulse.label)
         return [label_list]
 
-    def plot_pulses(self, title=None, figsize=(12, 6), dpi=None, show_axis=False):
+    def plot_pulses(self, title=None, figsize=(12, 6), dpi=None, show_axis=False, rescale_pulse_coeffs=True):
         """
         Plot the ideal pulse coefficients.
 
@@ -790,12 +790,15 @@ class Processor(object):
 
         pulse_ind = 0
         for i, label_group in enumerate(self.get_operators_labels()):
-            for label in label_group:
+            for j, label in enumerate(label_group):
                 grid = grids[pulse_ind]
                 ax = plt.subplot(grid)
                 ax.fill(tlist, coeffs[pulse_ind], color_list[i], alpha=0.7)
                 ax.plot(tlist, coeffs[pulse_ind], color_list[i])
-                ymax = max(np.abs(coeffs[pulse_ind])) * 1.1
+                if rescale_pulse_coeffs:
+                    ymax = np.max(np.abs(coeffs[pulse_ind])) * 1.1
+                else:
+                    ymax = np.max(np.abs(coeffs)) * 1.1
                 if ymax != 0.:
                     ax.set_ylim((-ymax, ymax))
 
@@ -809,7 +812,7 @@ class Processor(object):
                 ax.set_yticks([])
                 ax.set_ylabel(label,  rotation=0)
                 pulse_ind += 1
-        if title is not None:
-            ax.set_title(title)
+                if i == 0 and j==0 and title is not None:
+                    ax.set_title(title)
         fig.tight_layout()
         return fig, ax
