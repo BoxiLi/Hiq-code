@@ -782,10 +782,11 @@ class Processor(object):
         grids.update(wspace=0., hspace=0.)
 
         tlist = np.linspace(0., self.get_full_tlist()[-1], 1000)
+        dt = tlist[1] - tlist[0]
         coeffs = self.get_full_coeffs(tlist)
-        # make sure coeffs start with zero, for ax.fill
-        tlist = np.hstack(([-1.e-20], tlist))
-        coeffs = np.hstack((np.array([[0.]] * len(self.pulses)), coeffs))
+        # make sure coeffs start and end with zero, for ax.fill
+        tlist = np.hstack(([-dt*1.e-20], tlist, [tlist[-1] + dt*1.e-20]))
+        coeffs = np.hstack((np.array([[0.]] * len(self.pulses)), coeffs, np.array([[0.]] * len(self.pulses))))
 
         pulse_ind = 0
         for i, label_group in enumerate(self.get_operators_labels()):
