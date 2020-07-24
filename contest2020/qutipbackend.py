@@ -147,13 +147,9 @@ class QutipBackend(BasicEngine):
         self.qasm = ("OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[{nq}];\ncreg c[{nq}];"
             + self.qasm).format(nq=max_qubit_id + 1)
         
-        import tempfile
-        with tempfile.NamedTemporaryFile('r+') as f:
-            with open(f.name, 'r+') as writing_file:
-                writing_file.write(self.qasm)
-            qutip_circuit = read_qasm(f.name)
+        qutip_circuit = read_qasm(self.qasm, strmode=True)
         
-        self.processor.load_circuit(qutip_circuit, parallel=True)
+        self.processor.load_circuit(qutip_circuit, parallel=False)
 
         if self.final_state is None:
             dims = self.processor.dims
@@ -176,5 +172,10 @@ class QutipBackend(BasicEngine):
                 self._run()
                 self._reset()
 
-    def get_final_state(self):
-        return self.final_state
+    def get_final_state(self, qubits_only=True):
+        dims = self.final_state.dims[0]
+        qubits_ind = [i for i in range(len(dims)) if dims[i]==2]
+        if not qubits_only or len(dims) == len(qubits_ind):
+            return self.final_state
+        else:
+            return self.final_state.ptrace(qubits_ind)

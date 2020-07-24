@@ -1,7 +1,7 @@
 from qutip import basis, fidelity
 from qutip import Options
 from custermized_qip.device import DispersiveCavityQED
-from custermized_qip.device import Circuit_QED
+from custermized_qip.device import CircuitQED
 from custermized_qip.circuit import QubitCircuit
 
 # 定义一个circuit

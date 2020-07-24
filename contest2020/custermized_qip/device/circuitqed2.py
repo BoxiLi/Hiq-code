@@ -44,8 +44,8 @@ from ..pulse import Pulse
 from ..compiler.gatecompiler import GateCompiler
 from ..compiler import CircuitQEDCompiler
 
-__all__ = ['CircuitQED']
-class CircuitQED(ModelProcessor):
+__all__ = ['Circuit_QED']
+class Circuit_QED(ModelProcessor):
     """
     The processor based on the physical implementation of
     a circuit QED system.
@@ -139,7 +139,7 @@ class CircuitQED(ModelProcessor):
                  num_levels=10, deltamax=1000.0,
                  epsmax=50.0, w0=5e3, wq=None, eps=1000.0,
                  delta=1000, g=100.0, t1=None, t2=None):
-        super(CircuitQED, self).__init__(
+        super(Circuit_QED, self).__init__(
             N, correct_global_phase=correct_global_phase,
             t1=t1, t2=t2)
         self.correct_global_phase = correct_global_phase
