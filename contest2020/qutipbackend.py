@@ -30,10 +30,22 @@ from qutip import basis, Options
 # import projectq.setups
 
 class QutipBackend(BasicEngine):
-    def __init__(self, processor, options=None):
+    """
+    A backend that use QuTiP simulator to simulate quantum circuit
+    at the level of quantum evolution.
+    It compiles the circuit into control pulses depneding on
+    the physical model of the quantum system.
+    For detail please refer to http://qutip.org/tutorials.html#nisq.
+    """
+    def __init__(self, processor, options=None, schedule=True):
         """
         Args:
-            processor (qutip.qip.device.Processor): The simulation model in qutip. E.g. LinearSpinchain, CavityQED
+            processor (qutip.qip.device.Processor):
+            The simulation model in qutip.
+            E.g. LinearSpinchain, CavityQED, CircuitQED
+
+            options: (qutip.Options):
+            The option class object for the QuTiP solver.
         """
         BasicEngine.__init__(self)
         self.processor = processor
@@ -45,13 +57,14 @@ class QutipBackend(BasicEngine):
         else:
             self.options = options
         self.final_state = None
+        self.schedule = schedule
 
     def is_available(self, cmd):
         """
         Return true if the command can be executed.
 
-        The IBM quantum chip can do X, Y, Z, T, Tdag, S, Sdag,
-        rotation gates, barriers, and CX / CNOT.
+        For supporting gate of QuTiP, pleaser refer to
+        http://qutip.org/docs/latest/guide/guide-qip.html.
 
         Args:
             cmd (Command): Command for which to check availability
@@ -75,7 +88,7 @@ class QutipBackend(BasicEngine):
     def _store(self, cmd):
         """
         Copied from IBMBackend._store.
-        It transfer the ProjectQ circuit to QASM.
+        It transfer the ProjectQ circuit to QASM representation.
         """
         _gate_names = {str(Tdag): "tdg",
                     str(Sdag): "sdg"}
@@ -136,8 +149,8 @@ class QutipBackend(BasicEngine):
         """
         Run the circuit.
 
-        Send the circuit via the IBM API (JSON QASM) using the provided user
-        data / ask for username & password.
+        Send the circuit in the form of QASM string to QuTiP.
+        The circuit will be compiled and excuted.
         """
         # return if no operations / measurements have been performed.
         if self.qasm == "":
@@ -149,13 +162,14 @@ class QutipBackend(BasicEngine):
         
         qutip_circuit = read_qasm(self.qasm, strmode=True)
         
-        self.processor.load_circuit(qutip_circuit, parallel=False)
+        self.processor.load_circuit(qutip_circuit, parallel=self.schedule)
 
         if self.final_state is None:
             dims = self.processor.dims
             self.final_state = basis(dims)
         
-        self.final_state = self.processor.run_state(self.final_state, options=self.options).states[-1]
+        self.final_state = self.processor.run_state(
+            self.final_state, options=self.options).states[-1]
 
     def receive(self, command_list):
         """
@@ -173,6 +187,11 @@ class QutipBackend(BasicEngine):
                 self._reset()
 
     def get_final_state(self, qubits_only=True):
+        """
+        Return the simulation result. It will be a qutip.Qobj.
+        Depending on whether decoherence is present,
+        the state is represented by a ket state or a density matrix.
+        """
         dims = self.final_state.dims[0]
         qubits_ind = [i for i in range(len(dims)) if dims[i]==2]
         if not qubits_only or len(dims) == len(qubits_ind):
