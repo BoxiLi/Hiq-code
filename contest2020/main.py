@@ -39,8 +39,8 @@ DJ_algorith(eng)
 final_state = eng.backend.get_final_state()
 # The first two qubits should never be 00 (ideally, here not really)
 print("Excution time (us):", eng.backend.processor.get_full_tlist()[-1])
-print("The probability of measuring 00 state is\n", fidelity(final_state.ptrace([0, 1]), basis([2, 2])))
-# 画 pulse:
+print("The probability of measuring 00 state is\n", fidelity(final_state.ptrace([0, 1]), basis([2, 2]))**2)
+# plot pulse:
 fig, ax = eng.backend.processor.plot_pulses()
 fig.savefig("DJ_algorithm.png")
 print()
@@ -48,7 +48,7 @@ print()
 
 #######################################################
 print("Noisy circuit with scheduling:")
-processor = CircuitQED(num_qubits, t2=20.0)
+processor = CircuitQED(num_qubits, t1=10, t2=5.0)
 backend = QutipBackend(processor, options=options, schedule=True)
 eng = MainEngine(backend)
 
@@ -58,13 +58,13 @@ DJ_algorith(eng)
 final_state = eng.backend.get_final_state()
 # The first two qubits should never be 00 (ideally, here not really)
 print("Excution time (us):", eng.backend.processor.get_full_tlist()[-1])
-print("The probability of measuring 00 state is\n", fidelity(final_state.ptrace([0, 1]), basis([2, 2])))
+print("The probability of measuring 00 state is\n", 2*fidelity(final_state.ptrace([0, 1]), basis([2, 2]))**2)
 print()
 
 
 #######################################################
 print("Noisy circuit without scheduling:")
-processor = CircuitQED(num_qubits, t2=20.0)
+processor = CircuitQED(num_qubits, t1=10, t2=5.0)
 backend = QutipBackend(processor, options=options, schedule=False)
 eng = MainEngine(backend)
 
@@ -74,14 +74,14 @@ DJ_algorith(eng)
 final_state = eng.backend.get_final_state()
 # The first two qubits should never be 00 (ideally, here not really)
 print("Excution time (us):", eng.backend.processor.get_full_tlist()[-1])
-print("The probability of measuring 00 state is\n", fidelity(final_state.ptrace([0, 1]), basis([2, 2])))
+print("The probability of measuring 00 state is\n", 2*fidelity(final_state.ptrace([0, 1]), basis([2, 2]))**2)
 print()
 
 
 #######################################################
 print("Noisy circuit with external random field:")
-np.random.seed(1)
-processor = CircuitQED(num_qubits, t2=20.0)
+# np.random.seed(1)
+processor = CircuitQED(num_qubits, t1=10,  t2=5.0)
 backend = QutipBackend(processor, options=options, schedule=True)
 
 # We define a noise class
@@ -94,7 +94,7 @@ class ExternalField(UserNoise):
         """
         # Compute the random amplitude
         dt = 0.05
-        std = 200.  # fluntation of field (MHz)
+        std = 300.  # fluntation of field 1/20 of the pulse strength
         t_max = 0.
         for pulse in pulses:
             t_max = max(t_max, pulse.tlist[-1])
@@ -116,4 +116,4 @@ DJ_algorith(eng)
 final_state = eng.backend.get_final_state()
 # The first two qubits should never be 00 (ideally, here not really)
 print("Excution time (us):", eng.backend.processor.get_full_tlist()[-1])
-print("The probability of measuring 00 state is\n", fidelity(final_state.ptrace([0, 1]), basis([2, 2])))
+print("The probability of measuring 00 state is\n", 2*fidelity(final_state.ptrace([0, 1]), basis([2, 2]))**2)

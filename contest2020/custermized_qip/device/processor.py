@@ -789,10 +789,12 @@ class Processor(object):
         coeffs = np.hstack((np.array([[0.]] * len(self.pulses)), coeffs, np.array([[0.]] * len(self.pulses))))
 
         pulse_ind = 0
+        axis = []
         for i, label_group in enumerate(self.get_operators_labels()):
             for j, label in enumerate(label_group):
                 grid = grids[pulse_ind]
                 ax = plt.subplot(grid)
+                axis.append(ax)
                 ax.fill(tlist, coeffs[pulse_ind], color_list[i], alpha=0.7)
                 ax.plot(tlist, coeffs[pulse_ind], color_list[i])
                 if rescale_pulse_coeffs:
@@ -815,4 +817,4 @@ class Processor(object):
                 if i == 0 and j==0 and title is not None:
                     ax.set_title(title)
         fig.tight_layout()
-        return fig, ax
+        return fig, axis
