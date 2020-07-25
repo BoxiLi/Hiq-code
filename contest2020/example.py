@@ -1,18 +1,20 @@
 """
 This is an example using QuTiP as the backend for ProjectQ
 """
-from qutip import fidelity, basis, Options
+import numpy as np
 from projectq.backends import IBMBackend
 from projectq import MainEngine
 from projectq.ops import All, H, X, Z, Y, T, CNOT, Measure, FlushGate
 
+from qutip import fidelity, basis, Options
 from qutipbackend import QutipBackend
 from custermized_qip.device import CircuitQED
 
 # Choose a QuTiP processor as the backend
 num_qubits = 3
 processor = CircuitQED(num_qubits)
-eng = MainEngine(QutipBackend(processor, options=Options(nsteps=10000)))
+options = Options(nsteps=10000, max_step=0.0001)
+eng = MainEngine(QutipBackend(processor, options=options, schedule=False))
 # eng = MainEngine()
 
 # Define a circuit in ProjectQ: DJ algorithm
