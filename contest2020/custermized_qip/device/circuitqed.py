@@ -237,10 +237,10 @@ class CircuitQED(ModelProcessor):
         self.wq = w0+delta
         self.Delta=delta
 
-        # rwa/dispersive regime tests
-        if any(1-(w0 - self.wq)/(w0 + self.wq) > 0.05):
-            warnings.warn(
-                "The rotating-wave approximation might not be valid.")
+        # # rwa/dispersive regime tests
+        # if any(1-(w0 - self.wq)/(w0 + self.wq) > 0.05):
+        #     warnings.warn(
+        #         "The rotating-wave approximation might not be valid.")
         
     @property
     def sx_ops(self):
